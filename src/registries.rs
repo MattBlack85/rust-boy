@@ -1,4 +1,4 @@
-/// The registers used by the gameboy, following the official spec
+/// The registries used by the gameboy, following the official spec
 ///
 ///  16bit Hi   Lo   Name/Function
 ///  AF    A    -    Accumulator & Flags
@@ -7,7 +7,7 @@
 ///  HL    H    L    HL
 ///  SP    -    -    Stack Pointer
 ///  PC    -    -    Program Counter/Pointer
-pub struct Registers {
+pub struct Registries {
     a: u8,
     b: u8,
     c: u8,
@@ -20,9 +20,9 @@ pub struct Registers {
     pc: u16,
 }
 
-impl Registers {
+impl Registries {
     pub fn new() -> Self {
-        Registers {
+        Registries {
             a: 0,
             b: 0,
             c: 0,
@@ -150,11 +150,11 @@ impl Registers {
 
 #[cfg(test)]
 mod tests {
-    use crate::Registers;
+    use crate::registries::Registries;
 
     #[test]
-    fn check_16bit_registers() {
-        let mut r = Registers::new();
+    fn check_16bit_registries() {
+        let mut r = Registries::new();
 
         assert_eq!(r.read_af(), 0x0000);
         r.set_af(0xD240);
@@ -183,7 +183,7 @@ mod tests {
 
     #[test]
     fn test_a_register() {
-        let mut r = Registers::new();
+        let mut r = Registries::new();
         r.set_a(0xF9);
 
         assert_eq!(r.read_a(), 0xF9);
@@ -191,7 +191,7 @@ mod tests {
 
     #[test]
     fn test_b_register() {
-        let mut r = Registers::new();
+        let mut r = Registries::new();
         r.set_b(0xF9);
 
         assert_eq!(r.read_b(), 0xF9);
@@ -199,7 +199,7 @@ mod tests {
 
     #[test]
     fn test_c_register() {
-        let mut r = Registers::new();
+        let mut r = Registries::new();
         r.set_c(0xF9);
 
         assert_eq!(r.read_c(), 0xF9);
@@ -207,7 +207,7 @@ mod tests {
 
     #[test]
     fn test_d_register() {
-        let mut r = Registers::new();
+        let mut r = Registries::new();
         r.set_d(0xF9);
 
         assert_eq!(r.read_d(), 0xF9);
@@ -215,7 +215,7 @@ mod tests {
 
     #[test]
     fn test_e_register() {
-        let mut r = Registers::new();
+        let mut r = Registries::new();
         r.set_e(0xF9);
 
         assert_eq!(r.read_e(), 0xF9);
@@ -223,7 +223,7 @@ mod tests {
 
     #[test]
     fn test_f_register() {
-        let mut r = Registers::new();
+        let mut r = Registries::new();
         r.set_f(0xF9);
 
         assert_eq!(r.read_f(), 0xF9);
@@ -231,7 +231,7 @@ mod tests {
 
     #[test]
     fn test_sp_register() {
-        let mut r = Registers::new();
+        let mut r = Registries::new();
 
         assert_eq!(r.read_sp(), 0x0000);
         r.set_sp(0xF94A);
